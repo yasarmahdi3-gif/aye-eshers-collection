@@ -1,4 +1,4 @@
-
+const supabase = window.supabaseClient;
 /* =========================================
    AYEESHER'S COLLECTION
    SUPABASE BACKEND + SHOPPING SYSTEM
