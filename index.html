@@ -8,35 +8,52 @@
 
   <title>AYEESHER'S COLLECTION | Fashion & Elegance</title>
 
-  <meta name="description" content="Discover beautiful fashion, shoes, scarves, jewellery and accessories at AYEESHER'S COLLECTION, Jalingo, Taraba State.">
+  <meta name="description" content="Shop beautiful fashion, shoes, scarves, jewellery and accessories at AYEESHER'S COLLECTION in Jalingo, Taraba State.">
 
   <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="app.js" defer></script>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header class="header">
-    <a href="#" class="logo">
-      AYEESHER'S <span>COLLECTION</span>
+
+    <a href="#home" class="logo">
+      AYEESHER'S
+      <span>COLLECTION</span>
     </a>
 
-    <button class="menu-toggle" id="menuToggle">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      ☰
+    </button>
 
     <nav id="navigation">
       <a href="#home">Home</a>
       <a href="#shop">Shop</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a href="#cart" class="cart-link">
-        🛍 Cart (<span id="cartCount">0</span>)
-      </a>
+      <a href="#cart">🛍 Cart (<span id="cartCount">0</span>)</a>
+      <a href="#account">My Account</a>
     </nav>
+
   </header>
 
   <main>
 
+    <!-- HERO -->
     <section class="hero" id="home">
+
       <div class="hero-content">
+
         <p class="eyebrow">WELCOME TO OUR FASHION WORLD</p>
 
         <h1>Fashion, Style & Elegance</h1>
@@ -46,51 +63,162 @@
           that make every moment special.
         </p>
 
-        <a href="#shop" class="primary-btn">SHOP NOW</a>
+        <a href="#shop" class="primary-btn">
+          EXPLORE COLLECTION
+        </a>
+
       </div>
+
     </section>
 
+    <!-- CATEGORIES -->
     <section class="categories">
+
       <h2>Explore Our Collections</h2>
 
       <div class="category-list">
+
         <a href="#shop">Ladies' Fashion</a>
         <a href="#shop">Shoes</a>
         <a href="#shop">Scarves</a>
         <a href="#shop">Jewellery</a>
         <a href="#shop">Hair Accessories</a>
+
       </div>
+
     </section>
 
+    <!-- SHOP -->
     <section class="shop-section" id="shop">
+
       <div class="section-heading">
+
         <p>OUR COLLECTION</p>
         <h2>Shop Our Products</h2>
+
       </div>
 
       <div class="products" id="productList">
-        <!-- Products will be added with JavaScript -->
+
+        <p>Loading products...</p>
+
       </div>
+
     </section>
 
-    <section class="about-section" id="about">
-      <h2>About AYEESHER'S COLLECTION</h2>
+    <!-- ACCOUNT -->
+    <section class="account-section" id="account">
 
-      <p>
-        AYEESHER'S COLLECTION brings together fashion,
-        beauty and elegance. Discover stylish clothing,
-        beautiful accessories, footwear and more.
-      </p>
+      <div class="section-heading">
+
+        <p>WELCOME BACK</p>
+        <h2>Your Account</h2>
+
+      </div>
+
+      <div class="account-box">
+
+        <div id="authForms">
+
+          <h3>Customer Login</h3>
+
+          <form id="loginForm">
+
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Email address"
+              required
+            >
+
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Password"
+              required
+            >
+
+            <button type="submit" class="primary-btn">
+              LOGIN
+            </button>
+
+          </form>
+
+          <div class="account-divider">
+            <span>NEW CUSTOMER?</span>
+          </div>
+
+          <h3>Create Account</h3>
+
+          <form id="signupForm">
+
+            <input
+              type="text"
+              id="signupName"
+              placeholder="Full name"
+              required
+            >
+
+            <input
+              type="tel"
+              id="signupPhone"
+              placeholder="Phone number"
+              required
+            >
+
+            <input
+              type="email"
+              id="signupEmail"
+              placeholder="Email address"
+              required
+            >
+
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Create password (minimum 8 characters)"
+              minlength="8"
+              required
+            >
+
+            <button type="submit" class="primary-btn">
+              CREATE ACCOUNT
+            </button>
+
+          </form>
+
+          <p id="authMessage" role="status"></p>
+
+        </div>
+
+        <div id="userDashboard" hidden>
+
+          <h3>Welcome!</h3>
+
+          <p id="userName"></p>
+
+          <button id="logoutButton" class="secondary-btn">
+            LOG OUT
+          </button>
+
+        </div>
+
+      </div>
+
     </section>
 
+    <!-- CART -->
     <section class="cart-section" id="cart">
+
       <h2>Your Shopping Cart 🛍</h2>
 
       <div id="cartItems">
         Your shopping cart is empty.
       </div>
 
-      <h3>Total: ₦<span id="cartTotal">0</span></h3>
+      <h3>
+        Total: ₦<span id="cartTotal">0</span>
+      </h3>
 
       <button id="whatsappOrder" class="primary-btn">
         ORDER THROUGH WHATSAPP
@@ -100,13 +228,34 @@
         PAY ONLINE
       </button>
 
-      <p id="paymentMessage">
-        Online payment will be activated after payment gateway setup.
+      <p id="paymentMessage" role="status">
+        Secure online payment will be available after payment gateway setup.
       </p>
+
     </section>
 
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+
+      <h2>About AYEESHER'S COLLECTION</h2>
+
+      <p>
+        AYEESHER'S COLLECTION brings together fashion,
+        beauty and elegance. Discover stylish clothing,
+        beautiful accessories, footwear and more.
+      </p>
+
+      <p>
+        Our mission is to help you express your style
+        with confidence and elegance.
+      </p>
+
+    </section>
+
+    <!-- CONTACT -->
     <section class="contact-section" id="contact">
-      <h2>Contact Us</h2>
+
+      <h2>Get In Touch</h2>
 
       <p>📞 WhatsApp: 07070477730</p>
 
@@ -119,20 +268,28 @@
         href="https://wa.me/2347070477730"
         class="primary-btn"
         target="_blank"
+        rel="noopener noreferrer"
       >
         CHAT WITH US
       </a>
+
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <h3>AYEESHER'S COLLECTION</h3>
-    <p>Fashion • Style • Elegance</p>
-    <p>© 2026 AYEESHER'S COLLECTION. All rights reserved.</p>
-  </footer>
 
-  <script src="app.js"></script>
+    <h3>AYEESHER'S COLLECTION</h3>
+
+    <p>Fashion • Style • Elegance</p>
+
+    <p>
+      © 2026 AYEESHER'S COLLECTION.
+      All rights reserved.
+    </p>
+
+  </footer>
 
 </body>
 </html>
